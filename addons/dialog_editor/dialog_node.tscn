@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxshlf5cicnpt"]
+[gd_scene format=3 uid="uid://bxshlf5cicnpt"]
 
 [ext_resource type="Script" uid="uid://n3acl0cxv08v" path="res://addons/dialog_editor/dialog_node.gd" id="1_p2lmp"]
 [ext_resource type="PackedScene" uid="uid://cp2mf3unkodle" path="res://addons/dialog_editor/input_slot.tscn" id="2_3gugo"]
 
-[node name="DialogNode" type="GraphNode" node_paths=PackedStringArray("text_edit", "spin_box")]
+[node name="DialogNode" type="GraphNode" unique_id=974586003 node_paths=PackedStringArray("text_edit", "spin_box")]
 offset_right = 654.4
 offset_bottom = 170.0
 resizable = true
-title = "Diolog"
+title = "Dialog"
 ignore_invalid_connection_type = true
 slot/0/left_enabled = true
 slot/0/left_type = 0
@@ -41,19 +41,19 @@ text_edit = NodePath("Text")
 input_slot = ExtResource("2_3gugo")
 spin_box = NodePath("HBoxContainer/SpinBox")
 
-[node name="Text" type="TextEdit" parent="."]
+[node name="Text" type="TextEdit" parent="." unique_id=107574547]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2076141015]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1550701552]
 layout_mode = 2
 text = "Amount of out connections."
 
-[node name="SpinBox" type="SpinBox" parent="HBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer" unique_id=183787089]
 layout_mode = 2
 min_value = 1.0
 max_value = 100000.0
