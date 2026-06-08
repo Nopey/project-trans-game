@@ -17,7 +17,7 @@ bg_color = Color(0.359069, 0.359069, 0.359069, 0.807843)
 [sub_resource type="LabelSettings" id="LabelSettings_fli41"]
 font_size = 32
 
-[node name="DialogUI" type="Control" unique_id=1045835096 node_paths=PackedStringArray("start_node", "end_node", "graph", "resourse_to_save_line_edit", "max_input_slot_spin_box", "settings_menu")]
+[node name="Dialog Editor" type="Control" unique_id=1045835096 node_paths=PackedStringArray("start_node", "end_node", "graph", "resourse_to_save_line_edit", "max_input_slot_spin_box", "settings_menu")]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 3
 anchors_preset = 15

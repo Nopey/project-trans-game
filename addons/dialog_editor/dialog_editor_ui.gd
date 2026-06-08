@@ -63,6 +63,11 @@ func get_next_node() -> void:
 		#current_node_id += 1
 
 func _on_graph_edit_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
+	# disconnect any preexisting 'from' port connections
+	for connection in graph.connections:
+		if connection["from_node"] == from_node and connection["from_port"] == from_port:
+			graph.disconnect_node(from_node, from_port, connection["to_node"], connection["to_port"])
+
 	graph.connect_node(from_node, from_port, to_node, to_port)
 	get_next_node()
 
