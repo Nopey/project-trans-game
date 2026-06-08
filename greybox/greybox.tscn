@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://6fskswmexp4x"]
+
+[ext_resource type="PackedScene" uid="uid://d0ruvj86bb51y" path="res://greybox/greybox_room.blend" id="1_ympae"]
+[ext_resource type="Script" uid="uid://ds6u46yalksc" path="res://greybox/mirror_area.gd" id="3_lxgs5"]
+[ext_resource type="Script" uid="uid://dqgbtrjxidx5u" path="res://scripts/free_player.gd" id="3_m3544"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnr5r"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rnr5r"]
+height = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rnr5r"]
+size = Vector3(0.33, 6.16, 2.73)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3544"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m3544"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m3544"]
+width = 96
+height = 96
+noise = SubResource("FastNoiseLite_m3544")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3544"]
+size = Vector3(3, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxgs5"]
+size = Vector3(1, 1, 6)
+
+[node name="greybox" type="Node3D" unique_id=1558370741]
+
+[node name="greybox_room" parent="." unique_id=1434188696 instance=ExtResource("1_ympae")]
+
+[node name="FreePlayer" type="CharacterBody3D" parent="." unique_id=2141519928]
+script = ExtResource("3_m3544")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FreePlayer" unique_id=1474645264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_rnr5r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FreePlayer" unique_id=530345385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_rnr5r")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1068813078]
+transform = Transform3D(0.96615136, -0.14776605, 0.21146359, -2.2953468e-08, 0.81970227, 0.57278985, -0.25797608, -0.55340165, 0.7919564, 4.6496058, 14.454955, 11.039479)
+projection = 1
+size = 13.0
+
+[node name="mirror surface" type="MeshInstance3D" parent="." unique_id=103020714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.875484, 3, -4.332219)
+mesh = SubResource("BoxMesh_rnr5r")
+surface_material_override/0 = SubResource("StandardMaterial3D_m3544")
+
+[node name="Mirror Area" type="Area3D" parent="." unique_id=1857999898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7154393, 9.536743e-07, -4.5545664)
+script = ExtResource("3_lxgs5")
+
+[node name="Sprite3D" type="Sprite3D" parent="Mirror Area" unique_id=462637576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+texture = SubResource("NoiseTexture2D_m3544")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mirror Area" unique_id=1512692737]
+shape = SubResource("BoxShape3D_m3544")
+
+[node name="Bed Area" type="Area3D" parent="." unique_id=814735716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5596223, 9.536743e-07, -7.523074)
+script = ExtResource("3_lxgs5")
+
+[node name="Sprite3D" type="Sprite3D" parent="Bed Area" unique_id=343922684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+texture = SubResource("NoiseTexture2D_m3544")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bed Area" unique_id=1355174586]
+shape = SubResource("BoxShape3D_lxgs5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1846333574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4043937, -6.4185386)
+light_energy = 0.1
+omni_range = 15.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=679239264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7713933, -7.557472)
+shadow_enabled = true
+omni_range = 8.0
+omni_attenuation = 2.0
