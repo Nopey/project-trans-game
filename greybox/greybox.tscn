@@ -27,7 +27,6 @@ tonemap_mode = 2
 height = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_rnr5r"]
-flip_faces = true
 size = Vector3(0.33, 6.16, 2.73)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_m3544"]
@@ -79,7 +78,7 @@ surface_material_override/0 = ExtResource("4_lyq41")
 size = Vector2i(1024, 2048)
 
 [node name="Camera3D" type="Camera3D" parent="mirror surface/SubViewport" unique_id=1219842655]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.326036, 1.9322629, -4.332219)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.326036, -0.16559887, -4.332219)
 
 [node name="Mirror Area" type="Area3D" parent="." unique_id=1857999898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7154393, 9.536743e-07, -4.5545664)

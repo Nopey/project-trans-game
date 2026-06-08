@@ -7,3 +7,4 @@ viewport_path = NodePath("mirror surface/SubViewport")
 resource_local_to_scene = true
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_lxgs5")
+uv1_scale = Vector3(-1, 1, 1)
