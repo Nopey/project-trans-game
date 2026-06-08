@@ -1,0 +1,17 @@
+extends CharcterState
+class_name PlayerSprintState
+
+#func enter() -> void:
+	#character.rig.rpc("sprint")
+
+func update(delta) -> void:
+	if not Input.is_action_pressed("sprint"):
+		character.state_machine.change_state(character.walk_state)
+	ground_check()
+	if character.input == Vector3.ZERO:
+		character.state_machine.change_state(character.idle_state)
+	horizontal_movement(character.sprint_speed)
+	character.move_and_slide()
+
+func input(event: InputEvent) -> void:
+	ground_input_checks(event)

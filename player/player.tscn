@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cbkdfnbwwlyqu"]
+
+[ext_resource type="Script" uid="uid://djcm7xpkh82mh" path="res://scripts/Character/character_controller.gd" id="1_boad6"]
+[ext_resource type="Script" uid="uid://do1ltxs5fdwet" path="res://scripts/StateMachine/state_machine.gd" id="2_rgyib"]
+[ext_resource type="Script" uid="uid://cvcxg37qkurvf" path="res://scripts/StateMachine/player_idle_state.gd" id="3_hg6s5"]
+[ext_resource type="Script" uid="uid://d237mhb1atgcc" path="res://scripts/StateMachine/player_walk_state.gd" id="4_8t03j"]
+[ext_resource type="Script" uid="uid://btn8dhlylyvxw" path="res://scripts/StateMachine/player_sprint_state.gd" id="5_2ieo8"]
+[ext_resource type="Script" uid="uid://dwffbrwlay8k8" path="res://scripts/StateMachine/player_jump_state.gd" id="6_ebec5"]
+[ext_resource type="Script" uid="uid://cupxnl2u7186p" path="res://scripts/StateMachine/player_fall_state.gd" id="7_yllr7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kb6p2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_boad6"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1118821908 node_paths=PackedStringArray("camera", "state_machine", "idle_state", "walk_state", "sprint_state", "jump_state", "fall_state")]
+script = ExtResource("1_boad6")
+camera = NodePath("Camera3D")
+state_machine = NodePath("StateMachine")
+idle_state = NodePath("StateMachine/Idle")
+walk_state = NodePath("StateMachine/Walk")
+sprint_state = NodePath("StateMachine/Sprint")
+jump_state = NodePath("StateMachine/Jump")
+fall_state = NodePath("StateMachine/Fall")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1057740879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kb6p2")
+
+[node name="StateMachine" type="Node" parent="." unique_id=233961916 node_paths=PackedStringArray("start_start")]
+script = ExtResource("2_rgyib")
+start_start = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=455635634 node_paths=PackedStringArray("character")]
+script = ExtResource("3_hg6s5")
+character = NodePath("../..")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=513989932 node_paths=PackedStringArray("character")]
+script = ExtResource("4_8t03j")
+character = NodePath("../..")
+
+[node name="Sprint" type="Node" parent="StateMachine" unique_id=190301434 node_paths=PackedStringArray("character")]
+script = ExtResource("5_2ieo8")
+character = NodePath("../..")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=98346231 node_paths=PackedStringArray("character")]
+script = ExtResource("6_ebec5")
+character = NodePath("../..")
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=769597224 node_paths=PackedStringArray("character")]
+script = ExtResource("7_yllr7")
+character = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=559782706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1636062447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_boad6")

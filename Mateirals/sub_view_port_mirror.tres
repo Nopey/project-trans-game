@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ctdvntiutqkcv"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lxgs5"]
+viewport_path = NodePath("mirror surface/SubViewport")
+
+[resource]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_lxgs5")
