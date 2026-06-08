@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://g874abfujjmc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahob5"]
+bg_color = Color(0.612683, 0, 0.148509, 1)
+
+[node name="StartNode" type="GraphNode"]
+offset_right = 9.0
+offset_bottom = 55.0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_ahob5")
+position_offset = Vector2(50, 50)
+selectable = false
+title = "Start"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1.44392e-06, 0.348982, 0.890531, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
