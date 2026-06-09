@@ -23,7 +23,7 @@ class_name CharacterController
 var input: Vector3
 var forward: Vector3
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#camera.global_position.y = rig.get_camera_y()
 	#print(rig.get_camera_y())
 	var new_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")

@@ -4,7 +4,7 @@ class_name PlayerSprintState
 #func enter() -> void:
 	#character.rig.rpc("sprint")
 
-func update(delta) -> void:
+func update(_delta: float) -> void:
 	if not Input.is_action_pressed("sprint"):
 		character.state_machine.change_state(character.walk_state)
 	ground_check()
