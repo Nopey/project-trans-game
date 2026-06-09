@@ -8,6 +8,7 @@ class_name EnemyEye
 var attack_direction: DIRECTION
 var attack_distance: float = 4
 var timer: SceneTreeTimer
+var can_be_defended: bool
 var has_been_defended: bool
 
 enum FRAME {
@@ -77,6 +78,7 @@ func _ready() -> void:
 	timer.timeout.connect(start_prepare)
 
 func start_prepare() -> void:
+	can_be_defended = true
 	texture = frames[FRAME.PREPARE]
 	timer = get_tree().create_timer(1.5)
 	timer.timeout.connect(start_attack)
@@ -104,5 +106,5 @@ static func get_held_inputs() -> int:
 	return held_inputs
 
 func _process(_delta: float) -> void:
-	if CORRECT_INPUTS[attack_direction] == get_held_inputs():
+	if can_be_defended and CORRECT_INPUTS[attack_direction] == get_held_inputs():
 		start_ouch()
