@@ -8,6 +8,7 @@ func _process(_delta: float) -> void:
 		shield.hide()
 	else:
 		shield.show()
+		shield.modulate.a = 0.5 if held_dir in EnemyEye.FAKE_DIRS else 1.0
 		var angle = -PI/2 -(held_dir as int) * TAU / 16.0
 		var defend_dir_2d: Vector2 = Vector2.from_angle(angle)
 		shield.position = 1.5 * Vector3(defend_dir_2d.x, 0, defend_dir_2d.y)

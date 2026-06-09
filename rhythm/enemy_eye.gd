@@ -63,10 +63,15 @@ const CORRECT_INPUTS: Array[int] = [
 	0x09, # DW
 	0x21, # EW
 ]
+# directions that enemies don't spawn and Naomi can't defend
+# to reenable 16-direction attacks instead of just 12, remove the WASD from inside.
+const FAKE_DIRS: Array = [-1, DIRECTION.W, DIRECTION.A, DIRECTION.S, DIRECTION.D]
+# const FAKE_DIRS: Array = [-1]
 
 func _ready() -> void:
 	# "start_idle"
-	attack_direction = randi_range(0, 15) as DIRECTION
+	while attack_direction in FAKE_DIRS:
+		attack_direction = randi_range(0, 15) as DIRECTION
 	var angle = -PI/2 -(attack_direction as int) * TAU / 16.0
 	laser.global_rotation.y = -angle + PI / 2
 	var attack_dir_2d: Vector2 = Vector2.from_angle(angle)
