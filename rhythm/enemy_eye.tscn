@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://60ini3yarygn"]
+
+[ext_resource type="Texture2D" uid="uid://d27uy6mldvajq" path="res://rhythm/enemy_eye_sheet.png" id="1_ponm8"]
+[ext_resource type="Script" uid="uid://ph0c806wskbt" path="res://rhythm/enemy_eye.gd" id="2_ao6ow"]
+[ext_resource type="Texture2D" uid="uid://c4tu0tmgdpomh" path="res://rhythm/enemy_eye_laser.png" id="3_jc5js"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8oyb"]
+atlas = ExtResource("1_ponm8")
+region = Rect2(45, 219, 205, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p18v6"]
+atlas = ExtResource("1_ponm8")
+region = Rect2(54, 41, 191, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxtvm"]
+atlas = ExtResource("1_ponm8")
+region = Rect2(45, 219, 205, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwu6x"]
+atlas = ExtResource("1_ponm8")
+region = Rect2(47, 479, 183, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ugh6"]
+atlas = ExtResource("1_ponm8")
+region = Rect2(69, 664, 157, 94)
+
+[node name="Enemy Eye" type="Sprite3D" unique_id=1642321099]
+billboard = 1
+no_depth_test = true
+texture = SubResource("AtlasTexture_r8oyb")
+script = ExtResource("2_ao6ow")
+frames = Array[Texture]([SubResource("AtlasTexture_p18v6"), SubResource("AtlasTexture_hxtvm"), SubResource("AtlasTexture_xwu6x"), SubResource("AtlasTexture_1ugh6")])
+
+[node name="Laser" type="Sprite3D" parent="." unique_id=865185132]
+offset = Vector2(0, 250)
+axis = 1
+no_depth_test = true
+texture = ExtResource("3_jc5js")

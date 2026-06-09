@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://r3emc6vjn3vd"]
+
+[ext_resource type="Script" uid="uid://dp585qy33jmxm" path="res://rhythm/rhythm.gd" id="1_xlw0g"]
+[ext_resource type="PackedScene" uid="uid://d0ruvj86bb51y" path="res://greybox/greybox_room.blend" id="2_jd5y2"]
+[ext_resource type="PackedScene" uid="uid://60ini3yarygn" path="res://rhythm/enemy_eye.tscn" id="3_ep8oy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jd5y2"]
+sky_top_color = Color(0.085950635, 0.10997445, 0.1676093, 1)
+sky_horizon_color = Color(0.11233543, 0.11834139, 0.1327501, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.11233543, 0.11834139, 0.1327501, 1)
+energy_multiplier = 0.65
+
+[sub_resource type="Sky" id="Sky_q25ob"]
+sky_material = SubResource("ProceduralSkyMaterial_jd5y2")
+
+[sub_resource type="Environment" id="Environment_ep8oy"]
+background_mode = 2
+sky = SubResource("Sky_q25ob")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_ep8oy"]
+size = Vector3(0.33, 6.16, 2.73)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v47c0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_jd5y2"]
+offsets = PackedFloat32Array(0, 0.8013029)
+colors = PackedColorArray(0.075710885, 0.018625734, 0.0009573372, 1, 0.3032114, 0.15541306, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ep8oy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v47c0"]
+width = 180
+height = 320
+noise = SubResource("FastNoiseLite_ep8oy")
+color_ramp = SubResource("Gradient_jd5y2")
+
+[node name="Rhythm" type="Node3D" unique_id=1013876542]
+script = ExtResource("1_xlw0g")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838474480]
+environment = SubResource("Environment_ep8oy")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1059690661]
+transform = Transform3D(0.96615136, -0.14776605, 0.21146359, -2.2953468e-08, 0.81970227, 0.57278985, -0.25797608, -0.55340165, 0.7919564, 4.6496058, 14.454955, 11.039479)
+projection = 1
+size = 13.0
+
+[node name="greybox_room" parent="." unique_id=1946854795 instance=ExtResource("2_jd5y2")]
+
+[node name="mirror surface" type="MeshInstance3D" parent="." unique_id=73143607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.875484, 3, -4.332219)
+mesh = SubResource("BoxMesh_ep8oy")
+surface_material_override/0 = SubResource("StandardMaterial3D_v47c0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1294375871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4043937, -6.4185386)
+light_energy = 0.1
+omni_range = 15.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1823348116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7713933, -7.557472)
+shadow_enabled = true
+omni_range = 8.0
+omni_attenuation = 2.0
+
+[node name="Player" type="Sprite3D" parent="." unique_id=538345103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
+billboard = 1
+texture = SubResource("NoiseTexture2D_v47c0")
+
+[node name="Enemy Eye" parent="." unique_id=1642321099 instance=ExtResource("3_ep8oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
