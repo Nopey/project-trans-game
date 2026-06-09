@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 	next_spawn += randf_range(1,2)
 	var enemy_eye: Node3D = preload("res://rhythm/enemy_eye.tscn").instantiate()
 	add_child(enemy_eye)
-	enemy_eye.global_position += Vector3(0, 0, -7)
+	enemy_eye.global_position += Vector3(0, 1, -7) # xxx hardcoded offset

@@ -1,4 +1,5 @@
 extends Sprite3D
+class_name EnemyEye
 
 @export var frames: Array[Texture]
 
@@ -43,7 +44,7 @@ const INPUTS: Array[String] = [
 	"move_ccw",   # Q, 10
 	"move_cw",    # E, 20
 ]
-var CORRECT_INPUTS: Array[int] = [
+const CORRECT_INPUTS: Array[int] = [
 	0x01, # W
 	0x11, # QW
 	0x03, # AW
@@ -95,13 +96,13 @@ func start_attack() -> void:
 	texture = frames[FRAME.ATTACK]
 	laser.show()
 
-func _process(_delta: float) -> void:
+static func get_held_inputs() -> int:
 	var held_inputs = 0
 	for i in INPUTS.size():
 		if Input.is_action_pressed(INPUTS[i]):
 			held_inputs |= 1 << i
-	#if held_inputs != last:
-	#	print(held_inputs)
-	#	last = held_inputs
-	if CORRECT_INPUTS[attack_direction] == held_inputs:
+	return held_inputs
+
+func _process(_delta: float) -> void:
+	if CORRECT_INPUTS[attack_direction] == get_held_inputs():
 		start_ouch()

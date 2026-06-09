@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dp585qy33jmxm" path="res://rhythm/rhythm.gd" id="1_xlw0g"]
 [ext_resource type="PackedScene" uid="uid://d0ruvj86bb51y" path="res://greybox/greybox_room.blend" id="2_jd5y2"]
 [ext_resource type="PackedScene" uid="uid://60ini3yarygn" path="res://rhythm/enemy_eye.tscn" id="3_ep8oy"]
+[ext_resource type="Texture2D" uid="uid://bicjqsbomhitf" path="res://rhythm/rhythm_player.png" id="3_p18v6"]
+[ext_resource type="Script" uid="uid://dy67eewih3jkj" path="res://rhythm/rhythm_player.gd" id="3_r8oyb"]
+[ext_resource type="Texture2D" uid="uid://bls7ycdsa1jea" path="res://rhythm/shield.png" id="4_p18v6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jd5y2"]
 sky_top_color = Color(0.085950635, 0.10997445, 0.1676093, 1)
@@ -24,18 +27,6 @@ size = Vector3(0.33, 6.16, 2.73)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v47c0"]
 albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_jd5y2"]
-offsets = PackedFloat32Array(0, 0.8013029)
-colors = PackedColorArray(0.075710885, 0.018625734, 0.0009573372, 1, 0.3032114, 0.15541306, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ep8oy"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v47c0"]
-width = 180
-height = 320
-noise = SubResource("FastNoiseLite_ep8oy")
-color_ramp = SubResource("Gradient_jd5y2")
 
 [node name="Rhythm" type="Node3D" unique_id=1013876542]
 script = ExtResource("1_xlw0g")
@@ -69,7 +60,12 @@ omni_attenuation = 2.0
 [node name="Player" type="Sprite3D" parent="." unique_id=538345103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
 billboard = 1
-texture = SubResource("NoiseTexture2D_v47c0")
+texture = ExtResource("3_p18v6")
+script = ExtResource("3_r8oyb")
+
+[node name="Shield" type="Sprite3D" parent="Player" unique_id=828803041]
+billboard = 1
+texture = ExtResource("4_p18v6")
 
 [node name="Enemy Eye" parent="." unique_id=1642321099 instance=ExtResource("3_ep8oy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
