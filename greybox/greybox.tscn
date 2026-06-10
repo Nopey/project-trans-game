@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://6fskswmexp4x"]
 
-[ext_resource type="PackedScene" uid="uid://cbkdfnbwwlyqu" path="res://player/player.tscn" id="1_lxgs5"]
 [ext_resource type="PackedScene" uid="uid://d0ruvj86bb51y" path="res://greybox/greybox_room.blend" id="1_ympae"]
 [ext_resource type="Script" uid="uid://ds6u46yalksc" path="res://greybox/mirror_area.gd" id="3_lxgs5"]
 [ext_resource type="Script" uid="uid://dqgbtrjxidx5u" path="res://scripts/free_player.gd" id="3_m3544"]
@@ -47,13 +46,9 @@ size = Vector3(1, 1, 6)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1458397282]
 environment = SubResource("Environment_mrg6h")
 
-[node name="Player" parent="." unique_id=1118821908 instance=ExtResource("1_lxgs5")]
-
 [node name="greybox_room" parent="." unique_id=1434188696 instance=ExtResource("1_ympae")]
 
 [node name="FreePlayer" type="CharacterBody3D" parent="." unique_id=2141519928]
-process_mode = 4
-visible = false
 script = ExtResource("3_m3544")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FreePlayer" unique_id=1474645264]
