@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://ds6u46yalksc" path="res://greybox/mirror_area.gd" id="3_lxgs5"]
 [ext_resource type="Script" uid="uid://dqgbtrjxidx5u" path="res://scripts/free_player.gd" id="3_m3544"]
 [ext_resource type="Material" uid="uid://ctdvntiutqkcv" path="res://materials/sub_view_port_mirror.tres" id="4_lyq41"]
+[ext_resource type="PackedScene" uid="uid://da6g0cajkqn33" path="res://visual_novel/vn_engine.tscn" id="5_lyq41"]
+[ext_resource type="Script" uid="uid://w43fiqh4rnua" path="res://greybox/greybox_dialog.gd" id="6_q25ob"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lyq41"]
 sky_top_color = Color(0.085950635, 0.10997445, 0.1676093, 1)
@@ -114,3 +116,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7713933, -7.557472)
 shadow_enabled = true
 omni_range = 8.0
 omni_attenuation = 2.0
+
+[node name="VisualNovelEngine" parent="." unique_id=1489239841 instance=ExtResource("5_lyq41")]
+
+[node name="Greybox Dialog" type="Node" parent="." unique_id=782048865]
+script = ExtResource("6_q25ob")
